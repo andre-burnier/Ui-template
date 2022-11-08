@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXEMPLO UI</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
+  <script src="assets/js/sketch.js"></script>
+  <script src="assets/js/data.js"></script>
+
+  <script src="assets/js/ui.js"></script>
+  <script type="text/javascript">
+    const menu_opt = [{
+        no_ui_buttons: true, // pra esconder o "+"/"-" das abas do menu
+        // logo: true, // ui.js, linha 38  - gambiarra pra por um logo
+        title: "TITULO",
+        items: [
+          {type: 'file', name: 'load', text: 'carrega arquivo', callback: callback},
+          {type: 'button', name: 'button', text: 'botão', callback: callback},
+          {type: 'slider', name: 'slider', text: 'slider', min: 0, max: 100, value: 50, callback: callback},
+          {type: 'checkbox', name: 'checkbox', text: "checkbox", value: true, callback: callback},
+          {type: 'dropdown', name: 'dropdown', text: "dropdown", options: [{name: 'Regular', value: 0, selected: true}, {name: 'Medium', value: 1}, {name: 'Semi bold', value: 2}, {name: 'Bold', value: 3}, {name: 'Black', value: 4}], callback: callback},
+        ]
+      },{
+          title: "TITULO 2",
+          items: [
+            {type: 'text', name: 'text', text: 'text', value: "TYPE", callback: callback},
+            {type: 'number', name: 'number', text: 'number', value: 20, callback: callback},
+            {type: 'double_number', name: ['double_number_0', 'double_number_1'], text: 'double number', value: [800, 800]},
+          ]
+        }
+    ]
+
+    const ui_right = new UI_window({
+      name: 'menu',
+      // css: {
+      //   left: 'unset',
+      //   right: '0',
+      // },
+      sections: menu_opt,
+      data: ui_data
+    });
+  </script>
+
+</head>
+
+<body>
+  <main>
+  </main>
+</body>
+
+</html>

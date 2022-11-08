@@ -1,0 +1,292 @@
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-variation-settings: "wght"600;
+  /* font-weight: 100; */
+}
+
+div.ui_window {
+  width: 300px;
+  min-height: 100%;
+  max-height: 100%;
+  position: absolute;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  padding: 0;
+  background: white;
+  overflow-y: auto;
+}
+
+.ui_window .logo svg {
+  width: 150px;
+  /* height: 29px; */
+  margin-bottom: 25px;
+}
+
+div.ui.segments.ui_section {
+  padding: 0 1.5em;
+  margin: 1.5em 0;
+  background-color: unset;
+  border: 0;
+  box-shadow: unset;
+}
+
+div.ui_section>h1 {
+  color: black;
+  font-size: smaller;
+  font-family:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-variation-settings: "wght"800;
+  margin: 0;
+  margin-bottom: 6px;
+}
+
+.ui_window .ui.form .field {
+  margin-bottom: 0.5em;
+}
+
+.ui.form label, .ui.form .field>label {
+  color: black;
+  font-variation-settings: "wght"600;
+  /* font-weight: 100; */
+  /* text-transform: lowercase; */
+  font-size: x-small;
+}
+
+.ui.form div.ui.slider {
+  padding: 0;
+  margin-top: 0.4em;
+}
+
+div.ui_buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 10px;
+}
+
+div.ui_buttons>button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+div.ui_section.hidden>form {
+  display: none;
+}
+
+.ui_window .hide_btn {
+  color: black;
+  background-color:  white;
+}
+
+.ui_window .ui.button {
+  padding: 10px;
+  font-family:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-variation-settings: "wght"500;
+  /* font-weight: 100; */
+  margin: 5px 0;
+  font-size: 12px;
+  background-color: black;
+  color:  white;
+  /* text-transform: lowercase; */
+  border-radius: 0px;
+}
+
+.ui_window .ui.slider .inner {
+  height: 0.8em;
+}
+
+.ui_window .ui.slider .inner .thumb,
+.ui_window .ui.slider .inner .thumb:hover {
+  background-color: black;
+  height: 0.8em;
+  width: 0.8em;
+}
+
+.ui_window .ui.slider .inner .track,
+.ui_window .ui.slider .inner .track-fill {
+  background-color: black;
+  height: 1px;
+  top: 0.4em;
+}
+
+.ui_window .ui.form input,
+.ui_window .ui.form input:focus {
+  width: 50px;
+  padding: 0;
+  display: inline;
+  font-family:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  /* text-transform: uppercase; */
+  font-variation-settings: "wght"400;
+  /* font-weight: 100; */
+  font-size: x-small;
+  /* line-height: 20px; */
+  height: 17px;
+  border: 1px solid;
+  border-radius: 0px;
+  text-align: center;
+  background-color: unset;
+}
+
+.ui_window .ui.form input::-webkit-outer-spin-button,
+.ui_window .ui.form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ui_window .ui.form input[type=number] {
+  color: black;
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+.ui_window .ui.input {
+  font-size: x-small;
+  font-variation-settings: "wght"400;
+  /* font-weight: 100; */
+}
+
+.ui_window .ui.input.number,
+.ui_window .ui.input.text,
+.ui_window .ui.input.double_number {
+  color: black;
+  display: block;
+}
+
+.ui_window .ui.form input[type=text] {
+  color: black;
+  width: 100% !important;
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+.ui_window button.ui.icon.button {
+  border-radius: 0px;
+  margin: 0;
+  width: 17px;
+  height: 17px;
+  padding: 0 !important;
+}
+
+.input_floater {
+  float: right;
+}
+
+.ui_window .ui.checkbox {
+  width: 100%;
+}
+
+/* checkbox desmarcado */
+.ui_window .ui.checkbox label:before,
+.ui_window .ui.checkbox input:checked~label:before,
+.ui_window .ui.checkbox input:focus~label:before {
+  background-color: unset;
+  border-radius: 0px;
+  border: 1px solid black;
+}
+
+/* checkbox marcado */
+.ui_window .ui.checkbox input:checked~label:after {
+  background-color: black;
+  width: 13px;
+  height: 13px;
+  top: 2px;
+  left: auto;
+  right: 2px;
+  bottom: auto;
+  content: '';
+  border-radius: 0px;
+}
+
+.ui_window div.ui.dropdown,
+.ui_window div.ui.dropdown:focus,
+.ui_window div.ui.dropdown.active,
+.ui_window div.ui.dropdown.active:hover,
+.ui_window .ui.selection.dropdown .menu>.item {
+  border-radius: 0px;
+  float: right;
+  padding: 0;
+  padding-left: 3px;
+  min-height: unset;
+  border: 1px solid black;
+  height: 17px;
+  line-height: 17px;
+  background: unset;
+  min-width: 60% !important;
+  color: black;
+}
+
+.ui_window .ui.dropdown .text,
+.ui_window .ui.dropdown.active .text {
+  font-size: x-small;
+  /* font-weight: 100 !important; */
+  font-variation-settings: "wght"400;
+  margin-right: 20px;
+}
+
+.ui_window .ui.dropdown i.dropdown.icon {
+  padding: 0;
+  width: 17px;
+  height: 15px;
+  background-color: black;
+  color:  white;
+  border: 0;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "Icons";
+}
+
+.ui_window .ui.dropdown i.dropdown.icon:before {
+  content: '\f078';
+  line-height: 15px;
+}
+
+.ui_window .ui.selection.dropdown .menu,
+.ui_window .ui.selection.active.dropdown .menu {
+  background:  white;
+  border: 1px solid black;
+  border-radius: 0 !important;
+  margin-top: 1px;
+}
+
+.ui_window .ui.selection.dropdown .menu>.item {
+  padding: 0 !important;
+  line-height: 20px;
+  font-size: x-small;
+  /* text-transform: lowercase; */
+  width: 100%;
+  border: 0;
+  font-variation-settings: "wght"400;
+  /* font-weight: 100; */
+  text-align: center;
+}
+
+.ui_window .ui.selection.dropdown .menu>.item:hover {
+  background-color:  white;
+}
+
+.ui_window .ui.form input[type=file] {
+  display: none;
+}
+
+.ui_window .ui.tooltip {
+  background-color: black;
+  color:  white;
+  position: absolute;
+  height: 13px;
+  line-height: 15px;
+  min-width: 20px;
+  font-size: x-small;
+  font-family:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  text-align: center;
+  right: -22px;
+}
+
+div[data-label=cor] {
+  width: 130px;
+}
