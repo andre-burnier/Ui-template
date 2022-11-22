@@ -518,7 +518,7 @@ class UI_window {
           }
           if (option.image) {
             opt.classList.add('image');
-            opt.style.backgroundImage = `url(assets/images/${option.image})`;
+            opt.style.backgroundImage = `url(${option.image})`;
           }
 
           component.append(opt);
