@@ -62,10 +62,11 @@ class UI_window {
         s.appendChild(title);
       }
 
+      if (section.collapsed) s.classList.add('hidden');
+
       if (!section.no_ui_buttons) {
-        section.ui_buttons = this.create_ui_buttons();
+        section.ui_buttons = this.create_ui_buttons(section.collapsed);
         s.appendChild(section.ui_buttons);
-        // section.ui_buttons.children[0].click() /// SE QUISER COMEÇAR COM AS ABAS FECHADAS
       }
 
       let form = document.createElement('form');
@@ -140,6 +141,10 @@ class UI_window {
 
         if (item.type === "gridselector") {
           component.querySelectorAll(".colored, .image").forEach(opt => opt.style.height = `${opt.offsetWidth}px`);
+          component.addEventListener('resize', (e) => {
+            console.log(e)
+            component.querySelectorAll(".colored, .image").forEach(opt => opt.style.height = `${opt.offsetWidth}px`);
+          });
         }
 
       }
@@ -540,7 +545,7 @@ class UI_window {
     return component;
   }
 
-  create_ui_buttons() {
+  create_ui_buttons(hidden = false) {
     let component, hide_btn
 
     component = document.createElement("div");
@@ -548,7 +553,7 @@ class UI_window {
 
     hide_btn = document.createElement("button");
     hide_btn.className = "hide_btn";
-    hide_btn.innerText = "–";
+    hide_btn.innerText = hidden ? "+" : "-";
     // hide_btn.innerHTML = "<i class=\"eye icon\"></i>";
 
 
@@ -557,6 +562,9 @@ class UI_window {
       target.classList.toggle("hidden");
       if (target.classList.contains("hidden")) this.innerText = "+";
       else this.innerText = "-";
+      target.querySelectorAll('*').forEach(el => {
+        el.dispatchEvent(new Event('resize'));
+      });
     })
 
     component.appendChild(hide_btn);
