@@ -444,6 +444,7 @@ class UI_window {
       case "gridselector":
         component = document.createElement('div');
         component.className = "ui input gridselector";
+        if (component_obj.unselect) component.classList.add('unselectable');
         component.id = 'gridselector_' + component_obj.name;
 
         input = document.createElement('input');
@@ -490,23 +491,26 @@ class UI_window {
           component.append(opt);
 
           opt.addEventListener('click', (event) => {
-            const option = event.target.closest('.gridselector-option');
-            const gridselector = option.parentElement;
+            const optionEl = event.target.closest('.gridselector-option');
+            const gridselector = optionEl.parentElement;
             const input = gridselector.querySelector('input');
 
             if (multiselector) {
-              option.classList.toggle('selected');
+              optionEl.classList.toggle('selected');
             } else {
-              const wasSelected = option.classList.contains('selected');
+              const wasSelected = optionEl.classList.contains('selected');
               gridselector.querySelectorAll('.gridselector-option').forEach((el) => {
                 el.classList.remove('selected');
               });
-              if (!wasSelected)  option.classList.add('selected');
+              if (!wasSelected)  optionEl.classList.add('selected');
             }
 
             const values = [...gridselector.querySelectorAll('.selected')].map(el => el.dataset.value);
             input.value = values;
             this.updateDataFrom(input);
+
+            if (component_obj.callback) component_obj.callback(input.value);
+            if (option.callback) option.callback(input.value);
           });
 
           const values = [...component.querySelectorAll('.selected')].map(el => el.dataset.value);
