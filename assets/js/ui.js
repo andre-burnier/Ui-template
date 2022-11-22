@@ -333,7 +333,10 @@ class UI_window {
         });
 
         // if (component_obj.callback) input.addEventListener('change', component_obj.callback);
-        if (component_obj.callback) input.addEventListener('input', component_obj.callback);
+        input.addEventListener('input', (e) => {
+          this.updateDataFrom(input);
+          if (component_obj.callback) component_obj.callback(input.value);
+        });
 
         break;
       case 'button':
