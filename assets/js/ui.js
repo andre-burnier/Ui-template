@@ -98,6 +98,10 @@ class UI_window {
             if (item.callback) item.callback(item.params);
           });
 
+          let wrapper = document.createElement("div");
+          $(component).before(wrapper);
+          wrapper.append(component);
+
           let label = document.createElement("label");
           label.innerText = component.getAttribute("data-label");
           $(component).before(label);
