@@ -279,7 +279,10 @@ class UI_window {
           if (component_obj.callback) component_obj.callback();
         });
 
-        if (component_obj.callback) input.addEventListener('change', component_obj.callback);
+        input.addEventListener('input', (e) => {
+          this.updateDataFrom(input);
+          if (component_obj.callback) component_obj.callback(input.value);
+        });
 
         break;
       case 'text':
@@ -424,12 +427,14 @@ class UI_window {
         component.append(label);
         component.append(floater_);
 
-        if (component_obj.callback) {
-          inputA.addEventListener('change', component_obj.callback);
-          inputB.addEventListener('change', component_obj.callback);
-          // inputA.addEventListener('input', component_obj.callback);
-          // inputB.addEventListener('input', component_obj.callback);
-        }
+        inputA.addEventListener('input', (event) => {
+          this.updateDataFrom(inputA);
+          if (component_obj.callback) component_obj.callback(inputA.value)
+        });
+        inputB.addEventListener('input', (event) => {
+          this.updateDataFrom(inputB);
+          if (component_obj.callback) component_obj.callback(inputB.value)
+        });
 
         break;
       case "gridselector":
