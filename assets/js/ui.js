@@ -95,7 +95,6 @@ class UI_window {
           let input = document.getElementById('dropdown_' + item.name);
           input.addEventListener("change", function() {
             $(component).dropdown('set selected', input.value);
-            if (item.callback) item.callback(item.params);
           });
 
           let wrapper = document.createElement("div");
