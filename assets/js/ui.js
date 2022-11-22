@@ -472,6 +472,19 @@ class UI_window {
         input.name = component_obj.name;
         component.append(input);
 
+        input.addEventListener('change', (e) => {
+          const values = input.value.split(',');
+          const optionEls = input.parentElement.querySelectorAll('.gridselector-option');
+
+          optionEls.forEach((opt) => {
+            if (values.includes(opt.dataset.value)) {
+              opt.classList.add('selected');
+            } else {
+              opt.classList.remove('selected');
+            }
+          });
+        });
+
         if (component_obj.text) {
           const p = document.createElement('p');
           p.className = "ui gridselector-label";
