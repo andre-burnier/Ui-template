@@ -290,3 +290,43 @@ div.ui_section.hidden>form {
 div[data-label=cor] {
   width: 130px;
 }
+
+.ui_window .ui.gridselector {
+  display: grid;
+  grid-gap: 8px;
+  margin: 5px 0;
+}
+
+.ui_window .ui.gridselector-label {
+  grid-column: 1/-1;
+  margin: 0;
+}
+
+.ui_window .ui.gridselector-option {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.ui_window .ui.gridselector-option > p {
+  text-align: center;
+}
+
+.ui_window .ui.gridselector-option.selected {
+  background-color: black;
+  color: white;
+}
+
+.ui_window .ui.gridselector-option.colored,
+.ui_window .ui.gridselector-option.image {
+  background-size: cover;
+  border: 0;
+  background-clip: content-box;
+  padding: 0;
+}
+
+.ui_window .ui.gridselector-option.colored.selected,
+.ui_window .ui.gridselector-option.image.selected {
+  padding: 1px;
+  border: 1px solid black;
+}

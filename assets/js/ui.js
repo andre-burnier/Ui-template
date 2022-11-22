@@ -131,6 +131,10 @@ class UI_window {
           $(component).find(".thumb").hover(() => $(tooltip).toggle());
         }
 
+        if (item.type === "gridselector") {
+          component.querySelectorAll(".colored, .image").forEach(opt => opt.style.height = `${opt.offsetWidth}px`);
+        }
+
       }
 
       form.elements.forEach(el => {
@@ -421,7 +425,80 @@ class UI_window {
           // inputB.addEventListener('input', component_obj.callback);
         }
 
-        break
+        break;
+      case "gridselector":
+        component = document.createElement('div');
+        component.className = "ui input gridselector";
+        component.id = 'gridselector_' + component_obj.name;
+
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.id = 'input_' + component_obj.name;
+        input.name = component_obj.name;
+        component.append(input);
+
+        if (component_obj.text) {
+          const p = document.createElement('p');
+          p.className = "ui gridselector-label";
+          p.innerHTML = component_obj.text;
+          component.append(p);
+        }
+
+        if (component_obj.columns) {
+          component.style.gridTemplateColumns = `repeat(${component_obj.columns}, 1fr)`;
+        }
+
+        component_obj.options.forEach((option) => {
+          const multiselector = component_obj.multiselector;
+          const opt = document.createElement('div');
+          opt.className = "ui gridselector-option";
+          opt.id = 'gridselector-option_' + option.name;
+          opt.dataset.name = option.name;
+          opt.dataset.value = option.value;
+          
+          if (option.text) {
+            const p = document.createElement('p');
+            p.innerHTML = option.text;
+            opt.append(p);
+          }
+
+          if (option.selected) opt.classList.add('selected');
+          if (option.color) {
+            opt.classList.add('colored');
+            opt.style.backgroundColor = option.color;
+          }
+          if (option.image) {
+            opt.classList.add('image');
+            opt.style.backgroundImage = `url(assets/images/${option.image})`;
+          }
+
+          component.append(opt);
+
+          opt.addEventListener('click', (event) => {
+            const option = event.target.closest('.gridselector-option');
+            const gridselector = option.parentElement;
+            const input = gridselector.querySelector('input');
+
+            if (multiselector) {
+              option.classList.toggle('selected');
+            } else {
+              const wasSelected = option.classList.contains('selected');
+              gridselector.querySelectorAll('.gridselector-option').forEach((el) => {
+                el.classList.remove('selected');
+              });
+              if (!wasSelected)  option.classList.add('selected');
+            }
+
+            const values = [...gridselector.querySelectorAll('.selected')].map(el => el.dataset.value);
+            input.value = values;
+            this.updateDataFrom(input);
+          });
+
+          const values = [...component.querySelectorAll('.selected')].map(el => el.dataset.value);
+          input.value = values;
+        });
+
+        break;
       default:
         console.log("tipo de componente inválido");
         component = document.createElement('p');

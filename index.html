@@ -34,6 +34,31 @@
             {type: 'number', name: 'number', text: 'number', value: 20, callback: callback},
             {type: 'double_number', name: ['double_number_0', 'double_number_1'], text: 'double number', value: [800, 800]},
           ]
+        },{
+          title: "NOVOS",
+          items: [
+            {type: 'gridselector', name: 'multiselector', multiselector: true, columns: 2, options: [
+              { name: 'seletor-1', text: 'seletor 1', value: 1 },
+              { name: 'seletor-2', text: 'seletor 2', value: 2, selected: true },
+              { name: 'seletor-3', text: 'seletor 3', value: 3 },
+              { name: 'seletor-4', text: 'seletor 4', value: 4 },
+            ]},
+            {type: 'gridselector', name: 'cores', text: 'cores', columns: 7, options: [
+              { name: 'a', color: '#1ec9a1', value: 1 },
+              { name: 'b', color: '#be1ec9', value: 2, selected: true },
+              { name: 'c', color: '#c91e54', value: 3 },
+              { name: 'd', color: '#9cc91e', value: 4 },
+              { name: 'e', color: '#c0195f', value: 5 },
+              { name: 'f', color: '#cc7913', value: 6 },
+              { name: 'g', color: '#ae6921', value: 7 },
+            ]},
+            {type: 'gridselector', name: 'icones', text: 'icone svg', columns: 5, options: [
+              { name: 'a', image: 'a.jpg', value: 1 },
+              { name: 'b', image: 'b.jpg', value: 2, selected: true },
+              { name: 'c', image: 'a.jpg', value: 3 },
+              { name: 'd', image: 'b.jpg', value: 4 },
+            ]},
+          ]
         }
     ]
 
