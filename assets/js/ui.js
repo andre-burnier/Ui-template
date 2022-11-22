@@ -98,11 +98,15 @@ class UI_window {
           });
 
           let wrapper = document.createElement("div");
+          wrapper.id = 'dropdown-wrapper_' + item.name;
+          wrapper.className = 'ui dropdown-wrapper';
           $(component).before(wrapper);
           wrapper.append(component);
 
           let label = document.createElement("label");
           label.innerText = component.getAttribute("data-label");
+          label.id = 'dropdown-label_' + item.name;
+          label.className = 'ui dropdown-label';
           $(component).before(label);
         }
 
@@ -188,8 +192,8 @@ class UI_window {
       case 'dropdown':
         component = document.createElement('div');
         component.className = "ui floating mini compact selection dropdown";
-
-        component.setAttribute('data-label', component_obj.text);
+        component.id = 'dropdown-selector_' + component_obj.name;
+        component.dataset.label = component_obj.text;
 
         input = document.createElement('input');
         input.id = 'dropdown_' + component_obj.name;
