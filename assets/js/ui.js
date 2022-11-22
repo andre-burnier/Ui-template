@@ -269,6 +269,13 @@ class UI_window {
         component.append(label);
         component.append(floater);
 
+        if (component_obj.unit) {
+          const unit = document.createElement('span');
+          unit.innerHTML = component_obj.unit;
+          unit.className = "ui input-unit";
+          floater.append(unit);
+        }
+
         // b_subtract.addEventListener('click', (e) => this.updateDataFrom(input));
 
         b_subtract.addEventListener('click', () => {
@@ -430,6 +437,14 @@ class UI_window {
         floater_.append(inputB);
         component.append(label);
         component.append(floater_);
+
+        if (component_obj.unit) {
+          const unit = document.createElement('span');
+          unit.innerHTML = component_obj.unit;
+          unit.className = "ui input-unit";
+          inputA.after(unit);
+          inputB.after(unit.cloneNode(true));
+        }
 
         inputA.addEventListener('input', (event) => {
           this.updateDataFrom(inputA);

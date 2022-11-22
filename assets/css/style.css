@@ -331,3 +331,7 @@ div[data-label=cor] {
   padding: 1px;
   border: 1px solid black;
 }
+
+.ui_window .ui.input-unit {
+  padding-left: 2px;
+}

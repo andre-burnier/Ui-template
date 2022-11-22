@@ -32,8 +32,8 @@
           title: "TITULO 2",
           items: [
             {type: 'text', name: 'text', text: 'text', value: "TYPE", callback: callback},
-            {type: 'number', name: 'number', text: 'number', value: 20, callback: callback},
-            {type: 'double_number', name: ['double_number_0', 'double_number_1'], text: 'double number', value: [800, 800], callback: callback},
+            {type: 'number', name: 'number', text: 'number', value: 20, callback: callback, unit: "px"},
+            {type: 'double_number', unit: "mm", name: ['double_number_0', 'double_number_1'], text: 'double number', value: [800, 800], callback: callback},
           ]
         },{
           title: "NOVOS",
@@ -58,6 +58,16 @@
               { name: 'b', image: 'b.jpg', value: 2, callback: callback, selected: true },
               { name: 'c', image: 'a.jpg', value: 3, callback: callback },
               { name: 'd', image: 'b.jpg', value: 4 },
+            ]},
+            {type: 'gridselector', name: 'corBg', text: "cor de fundo", columns: 6, options: [
+              { name: 'Branco', color: "#FFFFFF", value: '#FFFFFF' },
+              { name: 'Lilás', color: "#C6B1FF", value: '#C6B1FF' },
+              { name: 'Beringela', color: "#440041", value: "#440041", selected: true },
+              { name: 'Verde', color: "#00B65D", value: '#00B65D' },
+              { name: 'Laranja', color: "#FF4D00", value: '#FF4D00' },
+              { name: 'Mostarda', color: "#DE8617", value: '#DE8617' },
+              { name: 'Amarelo', color: "#F5C300", value: '#F5C300' },
+              { name: 'Ocre', color: "#C4936B", value: '#C4936B' },
             ]},
           ]
         }
