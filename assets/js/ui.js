@@ -88,7 +88,7 @@ class UI_window {
               let input = document.getElementById('dropdown_' + item.name);
               input.value = value;
               this.updateDataFrom(input);
-              if (item.callback) item.callback(item.params);
+              if (item.callback) item.callback(value);
             }
           });
 
