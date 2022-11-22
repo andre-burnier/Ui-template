@@ -313,7 +313,7 @@ div[data-label=cor] {
   text-align: center;
 }
 
-.ui_window .ui.gridselector:not(.unselectable) .ui.gridselector-option.selected {
+.ui_window .ui.gridselector-option.selected {
   background-color: black;
   color: white;
 }
@@ -326,8 +326,8 @@ div[data-label=cor] {
   padding: 0;
 }
 
-.ui_window .ui.gridselector:not(.unselectable) .ui.gridselector-option.colored.selected,
-.ui_window .ui.gridselector:not(.unselectable) .ui.gridselector-option.image.selected {
+.ui_window .ui.gridselector-option.colored.selected,
+.ui_window .ui.gridselector-option.image.selected {
   padding: 1px;
   border: 1px solid black;
 }
