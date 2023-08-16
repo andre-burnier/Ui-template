@@ -34,25 +34,15 @@ class UI_window {
       s.className = 'ui_section ui segments';
       this.window.appendChild(s);
 
-      //Isso aqui é uma gambiarra pra quando eu tive que por um logo do cliente aqui. Fiz na unha, do codigo SVG pra cá.
-      // if (section.logo) {
-      //   let container = document.createElement('div');
-      //   container.className = "logo";
-      //
-      //   const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      //   iconSvg.setAttribute('fill', '#000000');
-      //   iconSvg.setAttribute('style', 'enable-background:new 0 0 1500 381;');
-      //   iconSvg.setAttribute('viewBox', '0 0 1500 381');
-      //   const iconPath1 = document.createElementNS('http://www.w3.org/2000/svg','path');
-      //   iconPath1.setAttribute(
-      //     'd',
-      //     'M427.1,109.3c-32.3,0-63.1,13.4-82.4,42.8l-6.7-39.5h-51.7v265.1h62V239.9c0-44.4,20.5-77.5,63.9-77.5 c39.8,0,57.7,27.8,57.7,68.6v146.8h62V221.6C531.8,157.7,499,109.3,427.1,109.3z'
-      //   );
-      //   iconSvg.appendChild(iconPath1);
-      //   container.appendChild(iconSvg);
-      //   s.appendChild(container);
-      // }
-
+      if (section.logo) {
+        let container = document.createElement('div');
+        container.className = "logo";
+      
+        const iconSvg = document.createElement('img');
+        iconSvg.setAttribute('src', section.logo);
+        container.appendChild(iconSvg);
+        s.appendChild(container);
+      }
 
       if (section.title) {
         s.id = section.title;
@@ -149,9 +139,9 @@ class UI_window {
 
       }
 
-      form.elements.forEach(el => {
+      for(let el of form.elements) {
         this.updateDataFrom(el);
-      });
+      }
     }
   }
 
@@ -358,6 +348,31 @@ class UI_window {
         });
 
         break;
+
+        case 'text_area':
+          component = document.createElement('div');
+          component.className = "ui input text";
+          component.id = 'text_' + component_obj.name;
+  
+          label = document.createElement('label');
+          label.innerText = component_obj.text;
+  
+  
+          input = document.createElement("textarea");
+          input.name = component_obj.name;
+          input.value = component_obj.value;
+          input.id = 'input_' + component_obj.name;
+  
+          component.append(label);
+          component.append(input);
+  
+          input.addEventListener('input', (e) => {
+            this.updateDataFrom(input);
+            if (component_obj.callback) component_obj.callback(input.value);
+          });
+  
+          break;
+
       case 'button':
         component = document.createElement('button');
         component.className = "ui fluid button";
