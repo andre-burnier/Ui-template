@@ -55,7 +55,8 @@ div.ui_section>h1 {
   font-size: x-small;
 }
 
-.ui.form div.ui.slider {
+.ui.form div.ui.slider,
+.ui.form div.ui.range_slider {
   padding: 0;
   margin-top: 0.4em;
 }
@@ -95,21 +96,31 @@ div.ui_section.hidden>form {
   border-radius: 0px;
 }
 
-.ui_window .ui.slider .inner {
+.ui_window .ui.slider .inner,
+.ui_window .ui.range_slider .inner {
   height: 0.8em;
 }
 
 .ui_window .ui.slider .inner .thumb,
-.ui_window .ui.slider .inner .thumb:hover {
+.ui_window .ui.slider .inner .thumb:hover,
+.ui_window .ui.range_slider .inner .thumb,
+.ui_window .ui.range_slider .inner .thumb:hover {
   background-color: black;
   height: 0.8em;
   width: 0.8em;
 }
 
 .ui_window .ui.slider .inner .track,
-.ui_window .ui.slider .inner .track-fill {
+.ui_window .ui.range_slider .inner .track {
   background-color: black;
   height: 1px;
+  top: 0.4em;
+}
+
+.ui_window .ui.slider .inner .track-fill,
+.ui_window .ui.range_slider .inner .track-fill {
+  background-color: black;
+  height: 2px;
   top: 0.4em;
 }
 

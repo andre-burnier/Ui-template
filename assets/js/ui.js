@@ -129,6 +129,36 @@ class UI_window {
           $(component).find(".thumb").hover(() => $(tooltip).toggle());
         }
 
+        if (item.type === 'range_slider') {
+          let tooltip = document.createElement('div');
+          tooltip.className = "ui tooltip";
+          tooltip.innerText = item.start+', '+item.end;
+
+          $(component).slider({
+            min: item.min,
+            max: item.max,
+            start: item.start,
+            end: item.end,
+            onChange: (end, start) => {
+              console.log(start, end)
+              let input = document.getElementById('input_' + item.name);
+              input.value = [start, start+end];
+              tooltip.innerText = start+', '+(start+end);
+              this.updateDataFrom(input);
+              if (item.callback) item.callback(item.params);
+            }
+          });
+
+          let input = document.getElementById('input_' + item.name);
+          input.addEventListener("change", () => {
+            $(component).slider('set value', input.value);
+          });
+
+          $(component).find(".thumb.second").after(tooltip);
+          $(tooltip).hide();
+          $(component).find(".thumb").hover(() => $(tooltip).toggle());
+        }
+
         if (item.type === "gridselector") {
           component.querySelectorAll(".colored, .image").forEach(opt => opt.style.height = `${opt.offsetWidth}px`);
           component.addEventListener('resize', (e) => {
@@ -206,6 +236,8 @@ class UI_window {
         component.appendChild(dd_icon);
 
         break;
+
+
       case 'slider':
         component = document.createElement('div');
         component.className = "ui slider";
@@ -229,6 +261,33 @@ class UI_window {
         component.append(input);
 
         break;
+
+        case 'range_slider':
+          component = document.createElement('div');
+          component.className = "ui range slider";
+          component.id = 'range_slider_' + component_obj.name;
+  
+          // slider deve ter mínimo, máximo e valor, se não tiver define o padrão
+          if (component_obj.min === undefined) component_obj.min = 0
+          if (component_obj.max === undefined) component_obj.max = 100
+          if (component_obj.start === undefined) component_obj.start = Math.round((component_obj.min + component_obj.max) / 3);
+          if (component_obj.end === undefined) component_obj.end = Math.round((component_obj.min + component_obj.max) * 2 / 3);
+  
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = component_obj.name;
+          input.id = 'input_' + component_obj.name;
+          input.value = component_obj.start + ',' + component_obj.end;
+  
+          label = document.createElement('label');
+          label.innerText = component_obj.text;
+  
+          component.append(label);
+          component.append(input);
+  
+          break;
+
+
       case 'number':
         component = document.createElement('div');
         component.className = "ui input number";
