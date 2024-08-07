@@ -125,8 +125,8 @@ class UI_window {
           });
 
           $(component).find(".thumb").after(tooltip);
-          $(tooltip).hide();
-          $(component).find(".thumb").hover(() => $(tooltip).toggle());
+          // $(tooltip).hide();
+          // $(component).find(".thumb").hover(() => $(tooltip).toggle());
         }
 
         if (item.type === 'range_slider') {
@@ -140,7 +140,6 @@ class UI_window {
             start: item.start,
             end: item.end,
             onChange: (end, start) => {
-              console.log(start, end)
               let input = document.getElementById('input_' + item.name);
               input.value = [start, start+end];
               tooltip.innerText = start+', '+(start+end);
@@ -155,14 +154,13 @@ class UI_window {
           });
 
           $(component).find(".thumb.second").after(tooltip);
-          $(tooltip).hide();
-          $(component).find(".thumb").hover(() => $(tooltip).toggle());
+          // $(tooltip).hide();
+          // $(component).find(".thumb").hover(() => $(tooltip).toggle());
         }
 
         if (item.type === "gridselector") {
           component.querySelectorAll(".colored, .image").forEach(opt => opt.style.height = `${opt.offsetWidth}px`);
           component.addEventListener('resize', (e) => {
-            console.log(e)
             component.querySelectorAll(".colored, .image").forEach(opt => opt.style.height = `${opt.offsetWidth}px`);
           });
         }

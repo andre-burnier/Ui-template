@@ -20,7 +20,7 @@ div.ui_window {
   overflow-y: auto;
 }
 
-.ui_window .logo svg {
+.ui_window .logo {
   width: 150px;
   /* height: 29px; */
   margin-bottom: 25px;
@@ -99,6 +99,7 @@ div.ui_section.hidden>form {
 .ui_window .ui.slider .inner,
 .ui_window .ui.range_slider .inner {
   height: 0.8em;
+  width: calc(100% - 25px);
 }
 
 .ui_window .ui.slider .inner .thumb,
@@ -295,7 +296,7 @@ div.ui_section.hidden>form {
   font-size: x-small;
   font-family:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
   text-align: center;
-  right: -22px;
+  right: -25px;
 }
 
 div[data-label=cor] {
